@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Bibliotheksverwaltung {
@@ -34,5 +35,23 @@ public class Bibliotheksverwaltung {
         for (Buch buch : ausgelieheneBuecher) {
             System.out.println(buch.getTitel() + " - " + buch.getAutor());
         }
+
+        // Kunden erstellen
+        Kunde kunde1 = new Kunde("Max Mustermann", "max@example.com");
+        Kunde kunde2 = new Kunde("Erika Mustermann", "erika@example.com");
+
+        // Bewertungen erstellen
+        Bewertung bewertung1 = new Bewertung(buch1, benutzer1, 5, "Tolles Buch!");
+        Bewertung bewertung2 = new Bewertung(buch2, benutzer2, 4, "Sehr hilfreich!");
+
+        // Bibliotheksstandorte erstellen
+        Bibliotheksstandort standort1 = new Bibliotheksstandort("Hauptbibliothek", "Hauptstraße 1", "Mo-Fr: 9-18 Uhr");
+        Bibliotheksstandort standort2 = new Bibliotheksstandort("Nebenstelle", "Nebenstraße 2", "Mo-Do: 10-16 Uhr");
+
+        // Ereignisse erstellen
+        Ereignis ereignis1 = new Ereignis("Lesung", LocalDateTime.now(), "Hauptbibliothek", "Lesung mit einem berühmten Autor");
+        Ereignis ereignis2 = new Ereignis("Workshop", LocalDateTime.now().plusDays(7), "Nebenstelle", "Java-Workshop für Anfänger");
+
+        // Weitere Verwendung der neuen Klassen...
     }
 }
