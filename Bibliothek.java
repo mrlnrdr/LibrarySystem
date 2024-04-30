@@ -79,5 +79,7 @@ public class Bibliothek {
         this.benutzer.add(benutzer);
     }
 
-    // Weitere Methoden für Buch- und Benutzerverwaltung...
+    // Weitere Methoden für Buch- und Benutzerverwaltung..
+    //
+
 }
