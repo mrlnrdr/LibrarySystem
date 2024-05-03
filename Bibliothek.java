@@ -6,6 +6,7 @@ public class Bibliothek {
     private List<Buch> buecher;
     private List<Benutzer> benutzer;
 
+
     public Bibliothek() {
         ausleihen = new ArrayList<>();
         buecher = new ArrayList<>();
@@ -68,6 +69,7 @@ public class Bibliothek {
     // Methoden für Buchverwaltung
     public void buchHinzufuegen(Buch buch) {
         buecher.add(buch);
+        System.out.println("Buch hinzugefügt: " + buch.getTitel());
     }
 
     public void buchEntfernen(Buch buch) {
@@ -76,7 +78,7 @@ public class Bibliothek {
 
     // Methoden für Benutzerverwaltung
     public void benutzerRegistrieren(Benutzer benutzer) {
-        this.benutzer.add(benutzer);
+        System.out.println("Benutzer registriert: " + benutzer.getName());
     }
 
     // Weitere Methoden für Buch- und Benutzerverwaltung..

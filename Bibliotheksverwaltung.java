@@ -1,27 +1,48 @@
     import java.time.LocalDateTime;
     import java.time.LocalDate;
     import java.util.List;
+    import java.util.Scanner;
+
+
 
     public class Bibliotheksverwaltung {
         public static void main(String[] args) {
             Bibliothek bibliothek = new Bibliothek();
-
+            Scanner scanner = new Scanner(System.in);
             // Bücher hinzufügen
             Buch buch1 = new Buch("Java ist toll", "John Doe");
             Buch buch2 = new Buch("Python für Anfänger", "Jane Smith");
             bibliothek.buchHinzufuegen(buch1);
             bibliothek.buchHinzufuegen(buch2);
+            // Bücher hinzufügen
+            System.out.println("Buch hinzufügen:");
+            System.out.print("Titel: ");
+            String buchTitel = scanner.nextLine();
+            System.out.print("Autor: ");
+            String buchAutor = scanner.nextLine();
+            Buch buch3 = new Buch(buchTitel, buchAutor);
+            bibliothek.buchHinzufuegen(buch1);
 
             // Benutzer registrieren
             Benutzer benutzer1 = new Benutzer("Max Mustermann", 123456);
             Benutzer benutzer2 = new Benutzer("Anna Schmidt", 789012);
             bibliothek.benutzerRegistrieren(benutzer1);
             bibliothek.benutzerRegistrieren(benutzer2);
+// Benutzer registrieren
+            System.out.println("\nBenutzer registrieren:");
+            System.out.print("Name: ");
+            String benutzerName = scanner.nextLine();
+            System.out.print("ID: ");
+            int benutzerAusweisnummer = scanner.nextInt();
+            scanner.nextLine(); // Um das newline-Zeichen nach nextInt() zu konsumieren
+            Benutzer benutzer3 = new Benutzer(benutzerName, benutzerAusweisnummer);
+            bibliothek.benutzerRegistrieren(benutzer1);
 
             // Bücher ausleihen und zurückgeben
             bibliothek.buchAusleihen(benutzer1, buch1);
             bibliothek.buchAusleihen(benutzer2, buch2);
             bibliothek.buchRueckgabe(benutzer1, buch1);
+
 
             // Verfügbare Bücher anzeigen
             System.out.println("Verfügbare Bücher:");
@@ -30,12 +51,15 @@
                 System.out.println(buch.getTitel() + " - " + buch.getAutor());
             }
 
+
+
             // Ausgeliehene Bücher eines Benutzers anzeigen
             System.out.println("\nAusgeliehene Bücher von " + benutzer1.getName() + ":");
             List<Buch> ausgelieheneBuecher = benutzer1.getAusgelieheneBuecher();
             for (Buch buch : ausgelieheneBuecher) {
                 System.out.println(buch.getTitel() + " - " + buch.getAutor());
             }
+
 
             // Kunden erstellen
             Kunde kunde1 = new Kunde("Max Mustermann", "max@example.com");
@@ -71,5 +95,6 @@
             // Bibliotheksangebot erstellen
             Bibliotheksangebot bibliotheksangebot = new Bibliotheksangebot("PC-Nutzung", "Freie Nutzung der PCs in der Bibliothek");
 
+            scanner.close();
         }
     }
