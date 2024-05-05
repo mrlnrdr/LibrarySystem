@@ -2,6 +2,7 @@
     import java.time.LocalDate;
     import java.util.List;
     import java.util.Scanner;
+
     public class Bibliotheksverwaltung {
         private List<Bewertung> bewertungen;
         private BewertungManager bewertungManager;
@@ -19,57 +20,140 @@
         public static void main(String[] args) {
             Bibliothek bibliothek = new Bibliothek();
             Scanner scanner = new Scanner(System.in);
+            Benutzer benutzer1 = new Benutzer("Max Mustermann", 123456);
+            // Menü anzeigen und Auswahl abfragen
+            int auswahl;
+            do {
+                System.out.println("Willkommen zur Bibliotheksverwaltung!");
+                System.out.println("Bitte wählen Sie eine Aktion aus:");
+                System.out.println("1. Buch hinzufügen");
+                System.out.println("2. Benutzer registrieren");
+                System.out.println("3. Verfügbare Bücher anzeigen");
+                System.out.println("4. Buch ausleihen");
+                System.out.println("5. Buch zurückgeben");
+                System.out.println("6. Bibliotheksstandort hinzufügen");
+                System.out.println("7. Bibliothekar erstellen");
+                System.out.println("8. Mitgliedschaft erstellen");
+                System.out.println("9. Gebühren festlegen");
+                System.out.println("10. Ausleihstatus überprüfen");
+                System.out.println("11. Veranstaltungskategorie erstellen");
+                System.out.println("12. Bibliotheksangebot erstellen");
+                System.out.println("13. Ereignis erstellen");
+                System.out.println("14. Ausgeliehene Bücher eines Benutzers anzeigen");
+                System.out.println("15. Beenden");
+                System.out.print("Ihre Auswahl: ");
+                auswahl = scanner.nextInt();
 
+                switch (auswahl) {
+                    case 1:
+                        System.out.println("Buch hinzufügen:");
+                        System.out.print("Titel: ");
+                        String buchTitel = scanner.nextLine();
+                        System.out.print("Autor: ");
+                        String buchAutor = scanner.nextLine();
+                        Buch buch3 = new Buch(buchTitel, buchAutor);
+                        bibliothek.buchHinzufuegen(buch3);
+                        break;
+                    case 2:
+                        System.out.println("\nBenutzer registrieren:");
+                        System.out.print("Name: ");
+                        String benutzerName = scanner.nextLine();
+                        System.out.print("ID: ");
+                        int benutzerAusweisnummer = scanner.nextInt();
+                        scanner.nextLine(); // Um das newline-Zeichen nach nextInt() zu konsumieren
+                        Benutzer benutzer3 = new Benutzer(benutzerName, benutzerAusweisnummer);
+                        bibliothek.benutzerRegistrieren(benutzer3);
+                        break;
+                    case 3:
+                        System.out.println("\nVerfügbare Bücher:");
+                        List<Buch> verfuegbareBuecher = bibliothek.getVerfuegbareBuecher();
+                        for (Buch buch : verfuegbareBuecher) {
+                            System.out.println(buch.getTitel() + " - " + buch.getAutor());
+                        }
+                        break;
+                    case 4:
+                        // Aktion: Buch ausleihen
+                        // Hier implementierst du die Logik für das Ausleihen eines Buches
+                        break;
+                    case 5:
+                        // Aktion: Buch zurückgeben
+                        // Hier implementierst du die Logik für das Zurückgeben eines Buches
+                        break;
+                    case 6:
+                        // Aktion: Bibliotheksstandort hinzufügen
+                        // Hier implementierst du die Logik für das Hinzufügen eines Bibliotheksstandorts
+                        break;
+                    case 7:
+                        bibliothek.bibliothekarHinzufuegenMitInput();
+                        break;
+                    case 8:
+                        // Aktion: Mitgliedschaft erstellen
+                        // Hier implementierst du die Logik für das Erstellen einer Mitgliedschaft
+                        break;
+                    case 9:
+                        // Aktion: Gebühren festlegen
+                        // Hier implementierst du die Logik für das Festlegen von Gebühren
+                        break;
+                    case 10:
+                        // Aktion: Ausleihstatus überprüfen
+                        // Hier implementierst du die Logik für das Überprüfen des Ausleihstatus
+                        break;
+                    case 11:
+                        // Aktion: Veranstaltungskategorie erstellen
+                        // Hier implementierst du die Logik für das Erstellen einer Veranstaltungskategorie
+                        break;
+                    case 12:
+                        // Aktion: Bibliotheksangebot erstellen
+                        // Hier implementierst du die Logik für das Erstellen eines Bibliotheksangebots
+                        break;
+                    case 13:
+                        // Aktion: Ereignis erstellen
+                        // Hier implementierst du die Logik für das Erstellen eines Ereignisses
+                        break;
+                    case 14:
+                        System.out.println("\nAusgeliehene Bücher von " + benutzer1.getName() + ":");
+                        List<Buch> ausgelieheneBuecher = benutzer1.getAusgelieheneBuecher();
+                        for (Buch buch : ausgelieheneBuecher) {
+                            System.out.println(buch.getTitel() + " - " + buch.getAutor());
+                        }
+                        break;
+                    case 15:
+                        // Aktion: Beenden
+                        System.out.println("Vielen Dank für die Nutzung der Bibliotheksverwaltung. Auf Wiedersehen!");
+                        break;
+                    default:
+                        System.out.println("Ungültige Auswahl. Bitte geben Sie eine gültige Option ein.");
+                }
+            } while (auswahl != 15);
             // Bücher hinzufügen
-            Buch buch1 = new Buch("Java ist toll", "John Doe");
-            Buch buch2 = new Buch("Python für Anfänger", "Jane Smith");
+           Buch buch1 = new Buch("Java ist toll", "John Doe");
+           Buch buch2 = new Buch("Python für Anfänger", "Jane Smith");
             bibliothek.buchHinzufuegen(buch1);
             bibliothek.buchHinzufuegen(buch2);
-            // Bücher hinzufügen
-            System.out.println("Buch hinzufügen:");
-            System.out.print("Titel: ");
-            String buchTitel = scanner.nextLine();
-            System.out.print("Autor: ");
-            String buchAutor = scanner.nextLine();
-            Buch buch3 = new Buch(buchTitel, buchAutor);
-            bibliothek.buchHinzufuegen(buch1);
+
+
 
             // Benutzer registrieren
-            Benutzer benutzer1 = new Benutzer("Max Mustermann", 123456);
-            Benutzer benutzer2 = new Benutzer("Anna Schmidt", 789012);
+
+           Benutzer benutzer2 = new Benutzer("Anna Schmidt", 789012);
             bibliothek.benutzerRegistrieren(benutzer1);
             bibliothek.benutzerRegistrieren(benutzer2);
-// Benutzer registrieren
-            System.out.println("\nBenutzer registrieren:");
-            System.out.print("Name: ");
-            String benutzerName = scanner.nextLine();
-            System.out.print("ID: ");
-            int benutzerAusweisnummer = scanner.nextInt();
-            scanner.nextLine(); // Um das newline-Zeichen nach nextInt() zu konsumieren
-            Benutzer benutzer3 = new Benutzer(benutzerName, benutzerAusweisnummer);
-            bibliothek.benutzerRegistrieren(benutzer1);
+
+
 
             // Bücher ausleihen und zurückgeben
             bibliothek.buchAusleihen(benutzer1, buch1);
-            bibliothek.buchAusleihen(benutzer2, buch2);
-            bibliothek.buchRueckgabe(benutzer1, buch1);
+           bibliothek.buchAusleihen(benutzer2, buch2);
+          bibliothek.buchRueckgabe(benutzer1, buch1);
 
 
             // Verfügbare Bücher anzeigen
-            System.out.println("Verfügbare Bücher:");
-            List<Buch> verfuegbareBuecher = bibliothek.getVerfuegbareBuecher();
-            for (Buch buch : verfuegbareBuecher) {
-                System.out.println(buch.getTitel() + " - " + buch.getAutor());
-            }
+
 
 
 
             // Ausgeliehene Bücher eines Benutzers anzeigen
-            System.out.println("\nAusgeliehene Bücher von " + benutzer1.getName() + ":");
-            List<Buch> ausgelieheneBuecher = benutzer1.getAusgelieheneBuecher();
-            for (Buch buch : ausgelieheneBuecher) {
-                System.out.println(buch.getTitel() + " - " + buch.getAutor());
-            }
+
 
 
             // Kunden erstellen
@@ -105,6 +189,7 @@
 
             // Bibliotheksangebot erstellen
             Bibliotheksangebot bibliotheksangebot = new Bibliotheksangebot("PC-Nutzung", "Freie Nutzung der PCs in der Bibliothek");
+
 
             scanner.close();
         }

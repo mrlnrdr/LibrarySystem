@@ -1,16 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+import java.util.Scanner;
 public class Bibliothek {
     private List<Ausleihe> ausleihen;
     private List<Buch> buecher;
     private List<Benutzer> benutzer;
+    private List<Bibliothekar> bibliothekare;
 
+    private List<Bibliotheksstandort> bibliotheksstandorte;
 
     public Bibliothek() {
         ausleihen = new ArrayList<>();
         buecher = new ArrayList<>();
         benutzer = new ArrayList<>();
+        this.bibliothekare = new ArrayList<>();
+        this.bibliotheksstandorte = new ArrayList<>();
     }
 
     // Methoden für Ausleihen verwalten
@@ -81,7 +86,28 @@ public class Bibliothek {
         System.out.println("Benutzer registriert: " + benutzer.getName());
     }
 
-    // Weitere Methoden für Buch- und Benutzerverwaltung..
-    //
+    public void bibliotheksstandortHinzufuegen(Bibliotheksstandort standort) {
+        bibliotheksstandorte.add(standort);
+    }
+
+    public void bibliothekarHinzufuegenMitInput() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bitte geben Sie den Namen des neuen Bibliothekars ein:");
+        String name = scanner.nextLine();
+
+        System.out.println("Bitte geben Sie die E-Mail-Adresse des neuen Bibliothekars ein:");
+        String email = scanner.nextLine();
+
+        // Erstelle ein neues Bibliothekar-Objekt mit den eingelesenen Daten
+        Bibliothekar bibliothekar = new Bibliothekar(name, email);
+
+        // Füge den neuen Bibliothekar zur Liste hinzu
+        this.bibliothekare.add(bibliothekar);
+
+        System.out.println("Neuer Bibliothekar erfolgreich hinzugefügt.");
+
+
+    }
 
 }
