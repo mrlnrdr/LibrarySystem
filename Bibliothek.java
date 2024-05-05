@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ public class Bibliothek {
     private List<Buch> buecher;
     private List<Benutzer> benutzer;
     private List<Bibliothekar> bibliothekare;
+    
 
     private List<Bibliotheksstandort> bibliotheksstandorte;
 
@@ -16,6 +18,7 @@ public class Bibliothek {
         benutzer = new ArrayList<>();
         this.bibliothekare = new ArrayList<>();
         this.bibliotheksstandorte = new ArrayList<>();
+        this.benutzer = new ArrayList<>();
     }
 
     // Methoden für Ausleihen verwalten
@@ -89,6 +92,13 @@ public class Bibliothek {
     public void bibliotheksstandortHinzufuegen(Bibliotheksstandort standort) {
         bibliotheksstandorte.add(standort);
     }
+    public List<Bibliotheksstandort> getBibliotheksstandorte() {
+        return bibliotheksstandorte;
+    }
+
+    public void bibliotheksstandortEntfernen(Bibliotheksstandort standort) {
+        bibliotheksstandorte.remove(standort);
+    }
 
     public void bibliothekarHinzufuegenMitInput() {
         Scanner scanner = new Scanner(System.in);
@@ -108,6 +118,10 @@ public class Bibliothek {
         System.out.println("Neuer Bibliothekar erfolgreich hinzugefügt.");
 
 
+    }
+
+    public List<Benutzer> getBenutzerListe() {
+        return benutzer;
     }
 
 }

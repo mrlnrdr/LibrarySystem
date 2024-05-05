@@ -76,12 +76,35 @@
                         // Hier implementierst du die Logik für das Ausleihen eines Buches
                         break;
                     case 5:
-                        // Aktion: Buch zurückgeben
-                        // Hier implementierst du die Logik für das Zurückgeben eines Buches
+                        Benutzer aktiverBenutzer = benutzer1;
+                        List<Buch> ausgelieheneBuecherBenutzer = aktiverBenutzer.getAusgelieheneBuecher();
+                        if (ausgelieheneBuecherBenutzer.isEmpty()) {
+                            System.out.println("Sie haben keine Bücher ausgeliehen.");
+                        } else {
+                            System.out.println("Folgende Bücher haben Sie ausgeliehen:");
+                            for (int i = 0; i < ausgelieheneBuecherBenutzer.size(); i++) {
+                                System.out.println((i+1) + ". " + ausgelieheneBuecherBenutzer.get(i).getTitel());
+                            }
+                            System.out.println("Bitte geben Sie die Nummer des Buches ein, das Sie zurückgeben möchten:");
+                            int buchNummer = Integer.parseInt(scanner.nextLine());
+                            if (buchNummer >= 1 && buchNummer <= ausgelieheneBuecherBenutzer.size()) {
+                                Buch buchZurueckgeben = ausgelieheneBuecherBenutzer.get(buchNummer - 1);
+                                bibliothek.buchRueckgabe(aktiverBenutzer, buchZurueckgeben);
+                            } else {
+                                System.out.println("Ungültige Buchnummer.");
+                            }
+                        }
                         break;
                     case 6:
-                        // Aktion: Bibliotheksstandort hinzufügen
-                        // Hier implementierst du die Logik für das Hinzufügen eines Bibliotheksstandorts
+                        System.out.println("Bitte geben Sie den Namen des neuen Bibliotheksstandorts ein:");
+                        String standortName = scanner.nextLine();
+                        System.out.println("Bitte geben Sie die Adresse des neuen Bibliotheksstandorts ein:");
+                        String standortAdresse = scanner.nextLine();
+                        System.out.println("Bitte geben Sie die Öffnungszeiten des neuen Bibliotheksstandorts ein:");
+                        String standortOeffnungszeiten = scanner.nextLine();
+                        Bibliotheksstandort neuerStandort = new Bibliotheksstandort(standortName, standortAdresse, standortOeffnungszeiten);
+                        bibliothek.bibliotheksstandortHinzufuegen(neuerStandort);
+                        System.out.println("Der Bibliotheksstandort \"" + standortName + "\" wurde erfolgreich hinzugefügt.");
                         break;
                     case 7:
                         bibliothek.bibliothekarHinzufuegenMitInput();
