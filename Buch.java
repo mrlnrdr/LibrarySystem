@@ -3,12 +3,14 @@ import java.util.Collection;
 import java.util.List;
 
 class Buch {
+    private int id;
     private String titel;
     private String autor;
     private boolean verfuegbar;
     private List<Bewertung> bewertungen;
 
     public Buch(String titel, String autor) {
+        this.id = id;
         this.titel = titel;
         this.autor = autor;
         this.verfuegbar = true;
@@ -34,7 +36,13 @@ class Buch {
     public void bewertungHinzufuegen(Bewertung bewertung) {
         this.bewertungen.add(bewertung);
     }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public List<Bewertung> getBewertungen() {
         return bewertungen;
     }
