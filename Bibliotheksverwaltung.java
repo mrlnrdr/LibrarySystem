@@ -189,16 +189,6 @@
            bibliothek.buchAusleihen(benutzer2, buch2);
           bibliothek.buchRueckgabe(benutzer1, buch1);
 
-
-            // Verfügbare Bücher anzeigen
-
-
-
-
-            // Ausgeliehene Bücher eines Benutzers anzeigen
-
-
-
             // Kunden erstellen
             Kunde kunde1 = new Kunde("Max Mustermann", "max@example.com");
             Kunde kunde2 = new Kunde("Erika Mustermann", "erika@example.com");

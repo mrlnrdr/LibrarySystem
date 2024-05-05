@@ -1,9 +1,21 @@
-// FakeBenutzerAuthentifizierung.java
+import java.util.HashMap;
+import java.util.Map;
+
 public class FakeBenutzerAuthentifizierung implements BenutzerAuthentifizierung {
+    private Map<String, String> benutzerdaten;
+
+    public FakeBenutzerAuthentifizierung() {
+        benutzerdaten = new HashMap<>();
+        benutzerdaten.put("benutzer1", "passwort1");
+        benutzerdaten.put("benutzer2", "passwort2");
+    }
+
     @Override
     public boolean authentifizieren(String benutzername, String passwort) {
-        // Hier kannst du die Logik für die Fake-Authentifizierung implementieren
-        // zum Beispiel immer true zurückgeben, um alle Benutzer zu authentifizieren
-        return true;
+        if (benutzerdaten.containsKey(benutzername) && benutzerdaten.get(benutzername).equals(passwort)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
