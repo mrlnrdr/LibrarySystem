@@ -2,13 +2,24 @@
     import java.time.LocalDate;
     import java.util.List;
     import java.util.Scanner;
-
-
-
     public class Bibliotheksverwaltung {
+        private List<Bewertung> bewertungen;
+        private BewertungManager bewertungManager;
+        public Bibliotheksverwaltung(List<Bewertung> bewertungen) {
+            this.bewertungen = bewertungen;
+            this.bewertungManager = new BewertungManager(bewertungen);
+        }
+        public void alleBewertungenAnzeigen() {
+            bewertungManager.alleBewertungenAnzeigen();
+        }
+
+        public double durchschnittlicheBewertung() {
+            return bewertungManager.durchschnittlicheBewertung();
+        }
         public static void main(String[] args) {
             Bibliothek bibliothek = new Bibliothek();
             Scanner scanner = new Scanner(System.in);
+
             // Bücher hinzufügen
             Buch buch1 = new Buch("Java ist toll", "John Doe");
             Buch buch2 = new Buch("Python für Anfänger", "Jane Smith");

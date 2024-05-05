@@ -1,14 +1,23 @@
+
 public class Bewertung {
     private Buch buch;
     private Benutzer benutzer;
     private int bewertung;
     private String kommentar;
+    private int sterne;
 
     public Bewertung(Buch buch, Benutzer benutzer, int bewertung, String kommentar) {
         this.buch = buch;
         this.benutzer = benutzer;
         this.bewertung = bewertung;
         this.kommentar = kommentar;
+        this.sterne = sterne;
+    }
+    public int getSterne() {
+        return sterne;
+    }
+    public void setSterne(int sterne) {
+        this.sterne = sterne;
     }
 
     // Getter methods
