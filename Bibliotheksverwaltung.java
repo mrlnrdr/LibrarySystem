@@ -4,9 +4,15 @@
     import java.util.Scanner;
 
     public class Bibliotheksverwaltung {
+        private final BenutzerAuthentifizierung authentifizierung;
+
+        public Bibliotheksverwaltung(BenutzerAuthentifizierung authentifizierung) {
+            this.authentifizierung = authentifizierung;
+        }
         private List<Bewertung> bewertungen;
         private BewertungManager bewertungManager;
-        public Bibliotheksverwaltung(List<Bewertung> bewertungen) {
+        public Bibliotheksverwaltung(BenutzerAuthentifizierung authentifizierung, List<Bewertung> bewertungen) {
+            this.authentifizierung = authentifizierung;
             this.bewertungen = bewertungen;
             this.bewertungManager = new BewertungManager(bewertungen);
         }
@@ -18,6 +24,20 @@
             return bewertungManager.durchschnittlicheBewertung();
         }
         public static void main(String[] args) {
+            BenutzerAuthentifizierung authentifizierung = new EinfacheBenutzerAuthentifizierung();
+            Bibliotheksverwaltung bibliotheksverwaltung = new Bibliotheksverwaltung(authentifizierung);
+
+            // Beispiel: Authentifizierung eines Benutzers
+            String benutzername = "admin";
+            String passwort = "geheim";
+
+            if (bibliotheksverwaltung.authentifizierung.authentifizieren(benutzername, passwort)) {
+                System.out.println("Benutzer erfolgreich authentifiziert.");
+                // Führe hier die weiteren Aktionen aus, die ein authentifizierter Benutzer durchführen darf
+            } else {
+                System.out.println("Fehler bei der Authentifizierung.");
+                // Behandlung für den Fall, dass die Authentifizierung fehlschlägt
+            }
             Bibliothek bibliothek = new Bibliothek();
             Scanner scanner = new Scanner(System.in);
             Benutzer benutzer1 = new Benutzer("Max Mustermann", 123456);
