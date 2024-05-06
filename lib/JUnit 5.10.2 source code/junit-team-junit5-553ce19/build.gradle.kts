@@ -48,7 +48,6 @@ val mavenizedProjects by extra(platformProjects + jupiterProjects + vintageProje
 val modularProjects by extra(mavenizedProjects - listOf(projects.junitPlatformConsoleStandalone.dependencyProject))
 
 dependencies {
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 	(modularProjects + listOf(projects.platformTests.dependencyProject)).forEach {
 		jacocoAggregation(project(it.path))
 	}
